@@ -1,0 +1,46 @@
+<div class="page">
+  @if (loading()) {
+    <p class="status-message">Loading workations...</p>
+  } @else if (error()) {
+    <p class="status-message error">{{ error() }}</p>
+  } @else {
+    <div class="table-wrapper">
+      <table class="workation-table">
+        <thead>
+          <tr>
+            @for (column of columns; track column.key) {
+              <th [class.working-days-col]="column.key === 'workingDays'">
+                <app-sortable-header
+                  [label]="column.label"
+                  [column]="column.key"
+                  [activeColumn]="sortState().column"
+                  [direction]="sortState().direction"
+                  (sort)="onSort($event)"
+                />
+              </th>
+            }
+          </tr>
+        </thead>
+        <tbody>
+          @for (workation of workations(); track workation.workationId) {
+            <tr>
+              <td>{{ workation.employee }}</td>
+              <td>
+                <app-country-cell [country]="workation.origin" />
+              </td>
+              <td>
+                <app-country-cell [country]="workation.destination" />
+              </td>
+              <td>{{ workation.start }}</td>
+              <td>{{ workation.end }}</td>
+              <td class="working-days-col">{{ workation.workingDays }}</td>
+              <td>
+                <app-risk-badge [risk]="workation.risk" />
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

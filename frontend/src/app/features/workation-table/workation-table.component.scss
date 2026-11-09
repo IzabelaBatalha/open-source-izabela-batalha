@@ -1,0 +1,55 @@
+.page {
+  min-height: 100vh;
+  padding: 2rem 2.5rem;
+}
+
+.status-message {
+  color: #003366;
+  font-size: 0.95rem;
+
+  &.error {
+    color: #db4446;
+  }
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.workation-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #d9e2ea;
+  min-width: 960px;
+  font-size: 0.875rem;
+  color: #003366;
+
+  thead tr {
+    background-color: #eef5fa;
+  }
+
+  th,
+  td {
+    padding: 0.85rem 1rem;
+    text-align: left;
+    border: 1px solid #d9e2ea;
+    white-space: nowrap;
+  }
+
+  th {
+    font-weight: 600;
+    color: #003366;
+  }
+
+  tbody tr {
+    transition: background-color 0.15s ease;
+
+    &:hover {
+      background-color: #e8f4f8;
+    }
+  }
+
+  .working-days-col {
+    text-align: center;
+  }
+}
